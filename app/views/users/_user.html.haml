@@ -1,0 +1,10 @@
+%tr[user]
+  %td= h user.email
+  %td= h user.oauth_token
+  %td= h user.oauth_secret
+  %td
+    = link_to 'Show', object_path(user)
+    |
+    = link_to 'Edit', edit_object_path(user)
+    |
+    = link_to 'Destroy', object_path(user), :confirm => 'Really destroy user?', :method => :delete

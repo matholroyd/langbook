@@ -1,0 +1,11 @@
+production: &defaults
+    host: langbook.com
+    name: Language Book
+    
+test:
+    <<: *defaults
+
+development:
+    <<: *defaults
+    host: langbook.local
+    

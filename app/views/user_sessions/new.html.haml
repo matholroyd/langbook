@@ -1,0 +1,10 @@
+- content_for(:heading, "Log in")
+
+= error_messages_for(:user_session)
+
+- semantic_form_for @user_session, :url => user_session_path do |f|
+  = f.inputs :email, :password
+  - f.buttons do |b|
+    = f.commit_button :label => 'Log in'
+    = oauth_login_button :value => "Login with Twitter"
+

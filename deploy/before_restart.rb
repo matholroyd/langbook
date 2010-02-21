@@ -1,0 +1,1 @@
+run "ln -nfs #{shared_path}/config/initializers/apis.rb #{release_path}/config/initializers/apis.rb"
