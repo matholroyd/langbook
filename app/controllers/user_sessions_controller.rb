@@ -9,7 +9,7 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new(params[:user_session])
     @user_session.save do |result|
       if result
-        redirect_back_or_default tworgies_path
+        redirect_back_or_default root_path
       else
         render :action => :new
       end
@@ -18,6 +18,6 @@ class UserSessionsController < ApplicationController
 
   def destroy
     current_user_session.destroy
-    redirect_back_or_default tworgies_path
+    redirect_back_or_default root_path
   end
 end

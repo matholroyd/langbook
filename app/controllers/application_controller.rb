@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   helper :all
-  helper_method :current_user_session, :current_user, :twitterer?
+  helper_method :current_user_session, :current_user
+
   filter_parameter_logging :password
 
   before_filter :require_user
@@ -35,9 +36,4 @@ class ApplicationController < ActionController::Base
     session[:return_to] = request.request_uri
   end
   
-  def twitterer?(&block)
-    result = current_user && current_user.twitterer?
-    block.call if block && result
-    result
-  end
 end

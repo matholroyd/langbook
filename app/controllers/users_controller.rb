@@ -3,15 +3,5 @@ class UsersController < ApplicationController
 
   resource_controller  
   
-  def create
-    @user = User.new(params[:user])
-    @user.save do |result|
-      if result
-        flash[:notice] = "Successful created account!"
-        redirect_to tworgies_path
-      else
-        render :action => :new
-      end
-    end
-  end
+  create.wants.html { redirect_to root_path}
 end

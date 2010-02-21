@@ -13,15 +13,9 @@ Rails::Initializer.run do |config|
   config.gem 'tworgy-ruby'
   config.gem 'tworgy-rails'
   config.gem 'formtastic'
-  config.gem 'mbleigh-acts-as-taggable-on', :lib => 'acts-as-taggable-on', :source => 'http://gems.github.com'
   config.gem 'machinist'
-  config.gem 'twitter'
-  config.gem "oauth"
   config.gem "resource_controller"
   
-  # Gem not up-to-date, therefore using plugin
-   # config.gem "authlogic-oauth", :lib => "authlogic_oauth"  
-
   config.time_zone = 'UTC'
   config.active_record.timestamped_migrations = false
 end
