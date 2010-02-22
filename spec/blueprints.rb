@@ -16,26 +16,13 @@ User.blueprint do
   password_confirmation { password }
 end
 
-Tworgy.blueprint do
+Deck.blueprint do
   user
-  name
-  latitude { (rand(20) - 10) - 25 }
-  longitude { (rand(20) - 10) + 131 }
+  name { Sham.title }
 end
 
-def mock_twitter(options = {})
-  {
-    :verify_credentials => {:screen_name => 'bob'},
-    :lists => {:lists => [
-      {:slug => 'listA', :id => 1, :name =>'listA'},
-      {:slug => 'listB', :id => 2, :name =>'listB'}
-    ]},
-    :list_members => {:users => {:length => 10}},
-    :list_subscribers => {:users => {:length => 10}},
-    :list_create => 'dummy object'
-  }.merge(options).ostructify
-end
-
-def User.twitter(oauth = nil)
-  @mock_twitter ||= mock_twitter
+Card.blueprint do
+  deck
+  question { Sham.body }
+  answer { Sham.body }
 end

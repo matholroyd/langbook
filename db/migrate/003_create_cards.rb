@@ -14,7 +14,8 @@ class CreateCards < ActiveRecord::Migration
       t.timestamps
     end
     
-    add_index :cards, :deck_id
+    add_index :cards, [:deck_id, :next_repetition]
+    add_index :cards, [:next_repetition, :deck_id]
   end
 
   def self.down

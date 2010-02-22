@@ -12,6 +12,7 @@ Rails::Initializer.run do |config|
   config.gem 'authlogic'
   config.gem 'tworgy-ruby'
   config.gem 'tworgy-rails'
+  config.gem 'tworgy-spaced-repetition'
   config.gem 'formtastic'
   config.gem 'machinist'
   config.gem "resource_controller"
