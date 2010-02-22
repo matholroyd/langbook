@@ -1,18 +1,8 @@
-%h1 Viewing user
-
-%div[current_object]
+%div[object]
   %p.email
     %strong Email
-    = h current_object.email
-  %p.password
-    %strong Password
-    = h current_object.password
-  %p.password_confirmation
-    %strong Password confirmation
-    = h current_object.password_confirmation
+    = h object.email
 
 = link_to 'Edit', edit_object_path
 |
 = link_to 'Destroy', object_path, :confirm => 'Really destroy user?', :method => :delete
-|
-= link_to 'Back', objects_path

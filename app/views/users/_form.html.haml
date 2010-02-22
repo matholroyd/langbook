@@ -1,1 +1,4 @@
 = form.inputs :email, :password, :password_confirmation
+- form.buttons do
+  = form.commit_button
+  = link_to 'Cancel', cancel_link
