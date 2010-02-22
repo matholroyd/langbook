@@ -5,7 +5,7 @@
   %tbody
     - @decks.each do |deck|
       %tr
-        %td= link_to h(deck.name), user_deck_path(@user, deck)
+        %td= link_to h(deck.name), deck_path(deck)
         
 %ul.actions
   %li= link_to 'add deck', new_user_deck_path(@user)

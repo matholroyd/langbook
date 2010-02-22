@@ -1,6 +1,6 @@
 %h2= object.name
 
 %ul.actions
-  %li= link_to '<< Back', user_decks_path(@user)
+  %li= link_to '<< Back', user_decks_path(@deck.user)
   %li= link_to 'Edit', edit_object_path
   %li= link_to 'Destroy', object_path, :confirm => 'Really destroy?', :method => :delete

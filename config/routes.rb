@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   map.resource :user_session, :except => [:edit, :show, :update]
-  map.resources :users do |users|
+  map.resources :users, :shallow => true do |users|
     users.resources :decks
   end
 
