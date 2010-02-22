@@ -1,0 +1,7 @@
+%h2 Creating deck
+
+= error_messages_for :deck
+
+- semantic_form_for [@user, @deck] do |f|
+  = render :partial => "form", :object => f, :locals => {:cancel_link => user_decks_path(@user)}
+

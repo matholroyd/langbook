@@ -1,0 +1,12 @@
+ul.actions li {
+  display: inline-block;
+  list-style: none;
+  padding: 0 10px; }
+  ul.actions li a {
+    font-size: .8em;
+    text-transform: uppercase;
+    text-decoration: none; }
+
+table thead th {
+  text-align: left;
+  padding-left: 10px; }

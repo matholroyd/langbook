@@ -1,8 +1,6 @@
 %div[object]
   %p.email
-    %strong Email
     = h object.email
 
-= link_to 'Edit', edit_object_path
-|
-= link_to 'Destroy', object_path, :confirm => 'Really destroy user?', :method => :delete
+%ul.actions
+  %li= link_to 'Edit', edit_object_path

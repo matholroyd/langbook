@@ -1,6 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
   map.resource :user_session, :except => [:edit, :show, :update]
-  map.resources :users
+  map.resources :users do |users|
+    users.resources :decks
+  end
 
   map.controller_actions 'home', %w{testing}
 
