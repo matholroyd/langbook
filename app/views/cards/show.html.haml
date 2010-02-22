@@ -1,0 +1,9 @@
+%h2 Card
+%p= @card.question
+%p= @card.answer
+
+%ul.actions
+  %li= link_to '<< Back', deck_path(@card.deck)
+  %li= link_to 'Add another card', new_deck_card_path(@card.deck)
+  %li= link_to 'Edit', edit_object_path
+  %li= link_to 'Destroy', object_path, :confirm => 'Really destroy?', :method => :delete

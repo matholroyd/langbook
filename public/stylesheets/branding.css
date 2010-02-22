@@ -8,5 +8,11 @@ ul.actions li {
     text-decoration: none; }
 
 table thead th {
-  text-align: left;
-  padding-left: 10px; }
+  text-align: left; }
+table thead th a {
+  font-weight: normal; }
+table tbody td {
+  padding: 5px;
+  margin: 0; }
+table tbody td.card_count {
+  text-align: center; }

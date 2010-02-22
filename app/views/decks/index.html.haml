@@ -2,10 +2,16 @@
   %thead
     %tr
       %th Decks
+      %th Cards
+      %th
+        %ul.actions
+          %li= link_to 'add deck', new_user_deck_path(@user)
   %tbody
     - @decks.each do |deck|
       %tr
         %td= link_to h(deck.name), deck_path(deck)
+        %td.card_count= deck.cards.count
+        %td
+          %ul.actions
+            %li= link_to 'Add card', new_deck_card_path(deck)
         
-%ul.actions
-  %li= link_to 'add deck', new_user_deck_path(@user)

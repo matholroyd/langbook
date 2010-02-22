@@ -1,0 +1,10 @@
+%h2 
+  Edit card
+%p= @card.question
+%p= @card.answer
+
+= error_messages_for :card
+
+- semantic_form_for @card do |f|
+  = render :partial => "form", :object => f, :locals => {:cancel_link => card_path(@card)}
+

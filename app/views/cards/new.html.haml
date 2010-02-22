@@ -1,0 +1,7 @@
+%h2 Creating card
+
+= error_messages_for :card
+
+- semantic_form_for [@deck, @card] do |f|
+  = render :partial => "form", :object => f, :locals => {:cancel_link => deck_path(@deck)}
+

@@ -1,5 +1,28 @@
 %h2= object.name
 
+
+%table
+  %thead 
+    %tr 
+      %th 
+      %th Question
+      %th Answer
+      %th
+        %ul.actions
+          %li= link_to 'Add card', new_deck_card_path(object)
+      
+        
+  %tbody
+    - object.cards.each_with_index do |card, i|
+      %tr
+        %td= "##{(i + 1)}"
+        %td= card.question
+        %td= card.answer
+        %td
+          %ul.actions
+            %li= link_to 'Edit', edit_card_path(card)
+          
+
 %ul.actions
   %li= link_to '<< Back', user_decks_path(@deck.user)
   %li= link_to 'Edit', edit_object_path
