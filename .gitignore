@@ -2,3 +2,4 @@ config/initializers/apis.rb
 
 public/stylesheets/tworgies.css
 public/stylesheets/main.css
+public/stylesheets/layout.css

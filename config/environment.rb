@@ -16,6 +16,7 @@ Rails::Initializer.run do |config|
   config.gem 'formtastic'
   config.gem 'machinist'
   config.gem "resource_controller"
+  config.gem "ri_cal"
   
   config.time_zone = 'UTC'
   config.active_record.timestamped_migrations = false
