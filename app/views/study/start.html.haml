@@ -1,0 +1,27 @@
+:javascript
+  $(document).ready(function() {
+  });
+
+%ul.actions
+  %li= link_to 'Study schedule (iCal)', study_url(@user.id, 'schedule', :protocol => 'webcal')
+
+
+.spinner
+  = image_tag 'branding/spinner.gif'
+.flash-card
+  .question
+    What is the answer
+  .button-bar
+    %ul.actions
+      %li= link_to 'Show answer', '#'
+  .answer
+    1234
+  .button-bar
+    %ul.actions
+      %li= link_to '1', '#'
+      %li= link_to '2', '#'
+      %li= link_to '3', '#'
+      %li= link_to '4', '#'
+      %li= link_to '5', '#'
+      %li= link_to '6', '#'
+  

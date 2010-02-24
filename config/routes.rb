@@ -6,8 +6,9 @@ ActionController::Routing::Routes.draw do |map|
     users.resources :decks, :shallow => true do |decks|
       decks.resources :cards
     end
-    users.resource :schedule, :member => {:caldav => :get}
   end
+
+  map.study '/users/:user_id/study/:action', :controller => 'study'
 
   map.root :controller => 'home', :action => 'index'
   map.controller_actions 'home', %w{testing}

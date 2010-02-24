@@ -5,6 +5,7 @@ require File.expand_path(File.dirname(__FILE__) + '/blueprints')
 require 'spec/autorun'
 require 'spec/rails'
 require 'authlogic/test_case'
+require "selenium/client"
 
 Spec::Runner.configure do |config|
   config.use_transactional_fixtures = true

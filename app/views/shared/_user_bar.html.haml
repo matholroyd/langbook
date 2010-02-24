@@ -1,8 +1,8 @@
 #user_bar.site
   %ul.actions
     - if current_user
-      %li= link_to 'decks', user_decks_path(current_user), :class => 'main'
-      %li= link_to 'learning schedule', user_schedule_path(current_user), :class => 'main'
+      %li= link_to 'study', study_path(current_user.id, :start), :class => 'main'
+      %li= link_to 'decks', user_decks_path(current_user)
       %li= link_to 'account', user_path(current_user)
       %li= link_to 'log out', user_session_path, :method => :delete
     - else
