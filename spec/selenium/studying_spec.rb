@@ -13,10 +13,18 @@ describe 'Studying integration' do
       :timeout_in_second => 60
 
     @browser.execution_delay = 0
-    @browser.execution_delay = 200
+    # @browser.execution_delay = 200
  
     User.destroy_all
     @user = User.make(:email => 'test@test.com')
+    
+    @deck = @user.decks.make
+
+    @card1 = @deck.cards.make
+    @card2 = @deck.cards.make
+
+    @card1.update_attributes(:next_repetition => Date.today)
+    @card2.update_attributes(:next_repetition => Date.today)
   end
  
   before(:each) do
@@ -36,22 +44,26 @@ describe 'Studying integration' do
     browser.type "user_session_password", "secret"
     browser.click "user_session_submit", :wait_for => :page
 
-    browser.click "link=study", :wait_for => :page
+    browser.click "link=study", :wait_for => :element, :element => 'id=thespinner'
 
-    browser.element?('id=thespinner').should == true
     browser.visible?('id=thespinner').should == true
+    browser.visible?('css=.card').should == false
 
-    browser.element?('css=.flash-card').should == true
-    browser.visible?('css=.flash-card').should == false
+    browser.wait_for :wait_for => :visible, :element => 'css=.card'
 
-    browser.wait_for :wait_for => :visible, :element => 'css=.flash-card'
+    browser.is_text_present(@card1.question).should == true
+    browser.is_text_present(@card1.answer).should == false
+    browser.visible?('css=.question-container').should == true
+    browser.visible?('css=.answer-container').should == false
     
-    # browser.wait_for_
+    browser.click 'link=show answer'
 
-    # browser.click "link=Show answer"
-    # browser.is_text_present("1234").should be_true
-    # browser.click "link=4"
-    # 
-    # browser.click "link=log out", :wait_for => :page
+    browser.is_text_present(@card1.question).should == true
+    browser.is_text_present(@card1.answer).should == true
+    browser.visible?('css=.question-container').should == true
+    browser.visible?('css=.answer-container').should == true
+
+    browser.click 'link=show answer'
+
   end
 end

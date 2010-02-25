@@ -26,6 +26,8 @@ Studying = function(options) {
         $(result.questionDom).hide();
         $(result.answerContainerDom).hide();
         
+        result.updateStatus(result);
+        
         if(card !== undefined) {
             result.currentCard = card;
             
@@ -38,14 +40,20 @@ Studying = function(options) {
     
     result.showQuestion = function() {
         $(result.questionDom).show();
+        $(result.showAnswerDom).show();
     }
     
     result.showAnswer = function() {
+        $(result.showAnswerDom).hide();
         $(result.answerContainerDom).show();
     }
     
     result.processQualityOfRecall = function(quality_of_recall) {
         
+    }
+    
+    result.cardsRemaining = function() {
+        return result.queue.getSize();
     }
     
     return result;

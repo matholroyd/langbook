@@ -11,13 +11,10 @@
       #header
         = render :partial => 'shared/user_bar'
         %h1= App[:name]
-      .site
-        #side
-          = yield(:side)
-        #main
-          %h1= yield(:heading)
-          %flash
-            %notice= flash[:notice] unless flash[:notice].blank?
-            %error= flash[:error] unless flash[:error].blank?
-          = yield
+      #main
+        %h1= yield(:heading)
+        %flash
+          %notice= flash[:notice] unless flash[:notice].blank?
+          %error= flash[:error] unless flash[:error].blank?
+        = yield
     #footer

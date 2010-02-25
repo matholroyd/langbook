@@ -14,6 +14,10 @@
       ,questionDom:'.question'
       ,answerContainerDom:'.answer-container'
       ,answerDom:'.answer'
+      ,showAnswerDom:'#showAnswer'
+      ,updateStatus: function(studying) {
+        $('#status').html(studying.cardsRemaining().toString() + " cards remaining");
+      }
     });
     $(document).ready(function() { 
       studying.loadCards();
@@ -38,19 +42,22 @@
   = image_tag 'branding/spinner.gif'
 
 .card
+  #status
   .question-container
+    %label Question
     .question
     .button-bar
       %ul.actions
-        %li= link_to 'Show answer', '', {:id => 'showAnswer'}
+        %li= link_to 'show answer', '', {:id => 'showAnswer'}
   .answer-container
+    %label Answer
     .answer
     .button-bar
       %ul.actions
-        %li= link_to '1', '', {:class => 'qualityOfRecall', :ref => 1}
-        %li= link_to '2', '', {:class => 'qualityOfRecall', :ref => 2}
-        %li= link_to '3', '', {:class => 'qualityOfRecall', :ref => 3}
-        %li= link_to '4', '', {:class => 'qualityOfRecall', :ref => 4}
-        %li= link_to '5', '', {:class => 'qualityOfRecall', :ref => 5}
-        %li= link_to '6', '', {:class => 'qualityOfRecall', :ref => 6}
+        %li.qualityOfRecall.q1= link_to 'Unknown', '', {:ref => 1}
+        %li.qualityOfRecall.q2= link_to 'Bad', '', {:ref => 2}
+        %li.qualityOfRecall.q3= link_to 'Almost', '', {:ref => 3}
+        %li.qualityOfRecall.q4= link_to 'Pass', '', {:ref => 4}
+        %li.qualityOfRecall.q5= link_to 'Good', '', {:ref => 5}
+        %li.qualityOfRecall.q6= link_to 'Perfect', '', {:ref => 6}
   
