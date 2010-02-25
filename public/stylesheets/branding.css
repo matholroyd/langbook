@@ -44,15 +44,15 @@ table tbody td.card_count {
     padding: 8px;
     margin: 0 10px;
     color: white; }
-.card .answer-container li.qualityOfRecall.q1 a {
+.card .answer-container li.qualityOfRecall.q0 a {
   background: #600; }
-.card .answer-container li.qualityOfRecall.q2 a {
+.card .answer-container li.qualityOfRecall.q1 a {
   background: #900; }
-.card .answer-container li.qualityOfRecall.q3 a {
+.card .answer-container li.qualityOfRecall.q2 a {
   background: #c00; }
-.card .answer-container li.qualityOfRecall.q4 a {
+.card .answer-container li.qualityOfRecall.q3 a {
   background: #060; }
-.card .answer-container li.qualityOfRecall.q5 a {
+.card .answer-container li.qualityOfRecall.q4 a {
   background: #090; }
-.card .answer-container li.qualityOfRecall.q6 a {
+.card .answer-container li.qualityOfRecall.q5 a {
   background: #0c0; }

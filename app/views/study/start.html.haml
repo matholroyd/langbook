@@ -8,6 +8,7 @@
     var flashCards;
     var studying = Studying({
       getCardsUrl:'#{study_path(@user.id, :cards, :date => "today")}'
+      ,putCardUrl:'#{study_path(@user.id, :process_recall_result, :format => "json")}'
       ,spinnerDom:'#thespinner'
       ,cardDom:'.card'
       ,questionContainerDom:'.question-container'
@@ -25,10 +26,8 @@
         studying.showAnswer();
         return false;
       });
-      $('a.qualityOfRecall').click(function(element) {
-        alert($(this).attr('ref'));
-        studying.processQualityOfRecall();
-        studying.studyNextCard();
+      $('.qualityOfRecall a').click(function(element) {
+        studying.processQualityOfRecall($(this).attr('ref'));
         return false;
       });
     });
@@ -54,10 +53,10 @@
     .answer
     .button-bar
       %ul.actions
-        %li.qualityOfRecall.q1= link_to 'Unknown', '', {:ref => 1}
-        %li.qualityOfRecall.q2= link_to 'Bad', '', {:ref => 2}
-        %li.qualityOfRecall.q3= link_to 'Almost', '', {:ref => 3}
-        %li.qualityOfRecall.q4= link_to 'Pass', '', {:ref => 4}
-        %li.qualityOfRecall.q5= link_to 'Good', '', {:ref => 5}
-        %li.qualityOfRecall.q6= link_to 'Perfect', '', {:ref => 6}
+        %li.qualityOfRecall.q0= link_to 'Unknown', '', {:ref => 0}
+        %li.qualityOfRecall.q1= link_to 'Bad', '', {:ref => 1}
+        %li.qualityOfRecall.q2= link_to 'Almost', '', {:ref => 2}
+        %li.qualityOfRecall.q3= link_to 'Pass', '', {:ref => 3}
+        %li.qualityOfRecall.q4= link_to 'Good', '', {:ref => 4}
+        %li.qualityOfRecall.q5= link_to 'Perfect', '', {:ref => 5}
   

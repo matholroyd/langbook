@@ -18,6 +18,14 @@ class StudyController < ApplicationController
     end
   end
   
+  def process_recall_result
+    @card = @user.cards.find(params[:id])
+    @card.process_recall_result(params[:quality_of_recall].to_i)
+    @card.save!
+    
+    render :json => @card.to_json(:methods => 'scheduled_to_recall?')
+  end
+  
   private 
   
   def find_user

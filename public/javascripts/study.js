@@ -1,60 +1,67 @@
 Studying = function(options) {
-    var result = options;
+    var that = options;
     
-    result.currentCard = null;
+    that.currentCard = null;
     
-    result.loadCards = function() {
-        $.getJSON(result.getCardsUrl, function(data) {
-            $(result.spinnerDom).hide();
-            result.setupQueue(data);
-            result.studyNextCard();
+    that.loadCards = function() {
+        $.getJSON(that.getCardsUrl, function(data) {
+            $(that.spinnerDom).hide();
+            that.setupQueue(data);
+            that.studyNextCard();
         });
     };
     
-    result.setupQueue = function(cards) {
-        result.queue = new Queue();
+    that.setupQueue = function(cards) {
+        that.queue = new Queue();
         var i;
         for(i = 0; i < cards.length; i++) {
-            result.queue.enqueue(cards[i]);
+            that.queue.enqueue(cards[i]);
         }  
     };
     
-    result.studyNextCard = function() {
-        var card = result.queue.dequeue();
+    that.studyNextCard = function() {
+        var card = that.queue.dequeue();
         
-        $(result.cardDom).show();
-        $(result.questionDom).hide();
-        $(result.answerContainerDom).hide();
+        $(that.questionDom).hide();
+        $(that.answerContainerDom).hide();
         
-        result.updateStatus(result);
+        that.updateStatus(that);
         
         if(card !== undefined) {
-            result.currentCard = card;
+            $(that.cardDom).show();
+            that.currentCard = card;
             
-            $(result.questionDom).html(card.question);
-            $(result.answerDom).html(card.answer);
+            $(that.questionDom).html(card.question);
+            $(that.answerDom).html(card.answer);
 
-            result.showQuestion();
+            that.showQuestion();
+        } else {
+            $(that.cardDom).hide();
         }
     };
     
-    result.showQuestion = function() {
-        $(result.questionDom).show();
-        $(result.showAnswerDom).show();
+    that.showQuestion = function() {
+        $(that.questionDom).show();
+        $(that.showAnswerDom).show();
     }
     
-    result.showAnswer = function() {
-        $(result.showAnswerDom).hide();
-        $(result.answerContainerDom).show();
+    that.showAnswer = function() {
+        $(that.showAnswerDom).hide();
+        $(that.answerContainerDom).show();
     }
     
-    result.processQualityOfRecall = function(quality_of_recall) {
-        
+    that.processQualityOfRecall = function(quality_of_recall) {
+        $.put(that.putCardUrl, {id:that.currentCard.id, quality_of_recall:quality_of_recall}, function(data) {
+            if(data['scheduled_to_recall?']) {
+                that.queue.enqueue(that.currentCard);
+            } 
+            studying.studyNextCard();
+        }, 'json');
     }
     
-    result.cardsRemaining = function() {
-        return result.queue.getSize();
+    that.cardsRemaining = function() {
+        return that.queue.getSize() + 1;
     }
     
-    return result;
+    return that;
 }
