@@ -9,6 +9,15 @@ class StudyController < ApplicationController
     send_data(@user.schedule.export, :type => 'text/calendar', :disposition => 'inline')
   end
   
+  def cards
+    @cards = @user.cards.scheduled_to_recall_up_to(Date.today)
+    respond_to do |format|
+      format.json do
+        render :json => @cards.to_json
+      end
+    end
+  end
+  
   private 
   
   def find_user

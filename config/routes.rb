@@ -8,7 +8,7 @@ ActionController::Routing::Routes.draw do |map|
     end
   end
 
-  map.study '/users/:user_id/study/:action', :controller => 'study'
+  map.study '/users/:user_id/study/:action.:format', :controller => 'study'
 
   map.root :controller => 'home', :action => 'index'
   map.controller_actions 'home', %w{testing}
