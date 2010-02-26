@@ -9,13 +9,12 @@ class ApplicationController < ActionController::Base
   protected
 
   def iphone_section
-    if session[:override_browser]
+    if iphone_request?
+      yield
+    elsif session[:override_browser]
       development_section do
         yield if session[:override_browser] == :iphone 
       end
-    elsif iphone_request?
-      fdsaf
-      yield
     end
   end
 
