@@ -9,9 +9,10 @@ class ApplicationController < ActionController::Base
   protected
 
   def iphone_section
-    if session[:override_browser] 
+    if session[:override_browser]
       yield if session[:override_browser] == :iphone
     elsif iphone_request?
+      fdsaf
       yield
     end
   end
@@ -51,10 +52,8 @@ class ApplicationController < ActionController::Base
   private
   
   def override_browser_type
-    if params[:browser] == 'normal'
-      session[:override_browser] = :normal
-    else
-      session[:override_browser] = :iphone
+    if params[:browser]
+      session[:override_browser] = params[:browser].to_sym
     end
   end
 
