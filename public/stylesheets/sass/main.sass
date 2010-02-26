@@ -25,6 +25,7 @@ a.main
 //  :-webkit-box-shadow 2px 1px 8px #000
 
 table  
+  :border-collapse collapse
   thead
     th 
       :text-align left
@@ -35,6 +36,12 @@ table
     td
       :padding 5px
       :margin 0
+    td.actions, td.ref
+      :padding 15px 5px
+      :vertical-align top
+    td.ref
+      :color green
+    
 
 ul.actions
   li 

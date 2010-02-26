@@ -1,11 +1,10 @@
 %h2= object.name
 
-%table
+%table.cards-in-deck
   %thead 
     %tr 
       %th 
-      %th Question
-      %th Answer
+      %th Cards
       %th
         %ul.actions
           %li= link_to 'Add card', new_deck_card_path(object)
@@ -14,10 +13,15 @@
   %tbody
     - object.cards.each_with_index do |card, i|
       %tr
-        %td= "##{(i + 1)}"
-        %td= card.question
-        %td= card.answer
+        %td.ref= "##{(i + 1)}"
         %td
+          %p.question
+            %label Question
+            = card.question
+          %p.answer
+            %label Answer
+            = card.answer
+        %td.actions
           %ul.actions
             %li= link_to 'Edit', edit_card_path(card)
           
