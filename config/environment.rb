@@ -11,7 +11,7 @@ Rails::Initializer.run do |config|
   config.gem 'faker'
   config.gem 'authlogic'
   config.gem 'tworgy-ruby'
-  config.gem 'tworgy-rails'
+  config.gem 'tworgy-rails',  :version => '>= 0.3.0'
   config.gem 'tworgy-spaced-repetition'
   config.gem 'formtastic'
   config.gem 'machinist'
