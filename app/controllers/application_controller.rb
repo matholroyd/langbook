@@ -11,10 +11,8 @@ class ApplicationController < ActionController::Base
   def iphone_section
     if iphone_request?
       yield
-    elsif session[:override_browser]
-      development_section do
-        yield if session[:override_browser] == :iphone 
-      end
+    elsif (RAILS_ENV == 'development') && session[:override_browser]
+      yield if session[:override_browser] == :iphone 
     end
   end
 
