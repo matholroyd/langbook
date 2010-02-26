@@ -47,16 +47,16 @@
     .question
     .button-bar
       %ul.actions
-        %li= link_to 'show answer', '', {:id => 'showAnswer'}
+        %li= link_to 'show answer', '', {:id => 'showAnswer', :class => 'main'}
   .answer-container
     %label Answer
     .answer
     .button-bar
       %ul.actions
-        %li.qualityOfRecall.q0= link_to 'Unknown', '', {:ref => 0}
-        %li.qualityOfRecall.q1= link_to 'Bad', '', {:ref => 1}
-        %li.qualityOfRecall.q2= link_to 'Almost', '', {:ref => 2}
-        %li.qualityOfRecall.q3= link_to 'Pass', '', {:ref => 3}
-        %li.qualityOfRecall.q4= link_to 'Good', '', {:ref => 4}
-        %li.qualityOfRecall.q5= link_to 'Perfect', '', {:ref => 5}
+        %li.qualityOfRecall.q0= link_to 'Unknown', '', {:ref => 0, :class => 'main'}
+        %li.qualityOfRecall.q1= link_to 'Bad', '', {:ref => 1, :class => 'main'}
+        %li.qualityOfRecall.q2= link_to 'Almost', '', {:ref => 2, :class => 'main'}
+        %li.qualityOfRecall.q3= link_to 'Pass', '', {:ref => 3, :class => 'main'}
+        %li.qualityOfRecall.q4= link_to 'Good', '', {:ref => 4, :class => 'main'}
+        %li.qualityOfRecall.q5= link_to 'Perfect', '', {:ref => 5, :class => 'main'}
   

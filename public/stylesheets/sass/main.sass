@@ -3,6 +3,7 @@
 
 body, .ui-widget
   :font
+    :size 0.9em
     :family Verdana,Arial,sans-serif
     
 h1, h2, h3, h4, h5, h6
@@ -12,3 +13,39 @@ h1, h2, h3, h4, h5, h6
 
 a 
   :color blue
+  
+a.main  
+  :padding 8px 12px
+  :border-radius = !radius
+  :-moz-border-radius = !radius
+  :-webkit-border-radius = !radius
+  :background #227FFF
+  :color #fff
+//  :moz-box-shadow 2px 1px 8px #000
+//  :-webkit-box-shadow 2px 1px 8px #000
+
+table  
+  thead
+    th 
+      :text-align left
+    th
+      a
+        :font-weight normal
+  tbody  
+    td
+      :padding 5px
+      :margin 0
+
+ul.actions
+  li 
+    :display inline-block
+    :list-style none
+    :padding 0 5px
+    :margin 0 5px
+    a
+      :font-size 80%
+      :text-transform uppercase
+      :text-decoration none
+
+
+  

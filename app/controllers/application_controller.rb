@@ -1,12 +1,20 @@
 class ApplicationController < ActionController::Base
   helper :all
-  helper_method :current_user_session, :current_user
+  helper_method :current_user_session, :current_user, :iphone_section, :development_section
 
   filter_parameter_logging :password
 
-  before_filter :require_user
+  before_filter :require_user, :override_browser_type
 
   protected
+
+  def iphone_section
+    if session[:override_browser] 
+      yield if session[:override_browser] == :iphone
+    elsif iphone_request?
+      yield
+    end
+  end
 
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
@@ -35,5 +43,19 @@ class ApplicationController < ActionController::Base
   def store_location
     session[:return_to] = request.request_uri
   end
+
+  def development_section
+    yield if RAILS_ENV == 'development'
+  end
   
+  private
+  
+  def override_browser_type
+    if params[:browser] == 'normal'
+      session[:override_browser] = :normal
+    else
+      session[:override_browser] = :iphone
+    end
+  end
+
 end

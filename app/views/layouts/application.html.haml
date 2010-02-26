@@ -4,6 +4,9 @@
     %meta{'http-equiv' => "Content-Type", :content => "text/css; charset=utf-8"}
     %title= yield(:title) || App[:name]
     = stylesheet_link_tag 'formtastic', 'formtastic_changes', 'jquery-ui-1.7.2.custom', 'main'
+    - iphone_section do
+      / %meta{:name => "viewport" , :content => "width=300"}
+      = stylesheet_link_tag 'iphone'
     = javascript_include_tag 'jquery-1.3.2.min', 'jquery-ui-1.7.2.custom.min', 'queue', 'application', 'study'
     = yield(:head)
   %body{:onload => (yield(:body_onload) || ''), :class => "#{params[:controller]}_#{params[:action]}"}
@@ -17,4 +20,8 @@
           %notice= flash[:notice] unless flash[:notice].blank?
           %error= flash[:error] unless flash[:error].blank?
         = yield
-    #footer
+      #footer
+        - development_section do
+          %ul.actions
+            %li= link_to 'normal', '?browser=normal'
+            %li= link_to 'iphone', '?browser=iphone'
