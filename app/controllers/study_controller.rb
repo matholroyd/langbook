@@ -10,7 +10,7 @@ class StudyController < ApplicationController
   end
   
   def cards
-    @cards = @user.cards.scheduled_to_recall_up_to(Date.today)
+    @cards = @user.pending_cards_to_study
     respond_to do |format|
       format.json do
         render :json => @cards.to_json

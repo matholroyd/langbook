@@ -3,9 +3,18 @@ class User < ActiveRecord::Base
   
   has_many :decks
   has_many :cards, :through => :decks
-  
+
+  default_value_for :daily_card_quota, 30
+
   def time_scheduled_for_recalls
     10
+  end
+  
+  def pending_cards_to_study
+    result = cards.scheduled_to_recall_up_to(Date.today)
+    remaining_quota = [self.daily_card_quota - result.length, 0].max
+    result += cards.unstudied.find(:all, :limit => remaining_quota)
+    result
   end
   
   def schedule

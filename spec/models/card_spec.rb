@@ -1,4 +1,4 @@
-require 'spec_helper'
+require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Card do
   before :each do
@@ -67,6 +67,19 @@ describe Card do
       @user.cards.scheduled_to_recall_on(Date.today).should == [@cardA2]
       @user.cards.scheduled_to_recall_on(Date.today + 1).should == [@cardB2]
       @user.cards.scheduled_to_recall_on(Date.today + 2).should == []
+    end
+    
+    it 'should find all the cards that have never been studied, in order of created' do
+      user = User.make
+      deck = user.decks.make
+      card = deck.cards.make
+      
+      user.cards.unstudied.should == [card]
+      
+      card.process_recall_result(4)
+      card.save
+
+      user.cards.unstudied.should == []
     end
     
   end

@@ -5,7 +5,8 @@ class Card < ActiveRecord::Base
   belongs_to :deck
   
   validates_presence_of :question, :answer, :deck_id
-  
+
+  named_scope :unstudied, :conditions => {:last_studied => nil, :next_repetition => nil}
   named_scope :scheduled_to_recall_up_to, lambda { |date|
     date = Date.today if date.nil?
     {:conditions => ['next_repetition <= ?', date.to_s(:db)], :order => 'next_repetition ASC'}

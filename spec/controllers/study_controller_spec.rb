@@ -43,7 +43,7 @@ describe StudyController do
     end
     
   end
-  
+    
   describe 'PUT process_recall_result' do
     it 'should return success' do
       put :process_recall_result, :user_id => @user.id, :id => @card1.id, :quality_of_recall => 5
