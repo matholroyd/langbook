@@ -1,4 +1,9 @@
-%h2 Creating deck
+:ruby
+  heading 'New Deck' do |back, forward|
+    back.title = 'Decks'
+    back.path = user_decks_path(@user)
+  end
+
 
 = error_messages_for :deck
 

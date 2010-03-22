@@ -1,3 +1,9 @@
+:ruby
+  heading 'New Card' do |back, forward|
+    back.title = 'Back'
+    back.path = deck_path(@deck)
+  end
+
 %h2 Creating card
 
 = error_messages_for :card

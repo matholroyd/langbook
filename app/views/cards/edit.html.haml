@@ -1,5 +1,8 @@
-%h2 
-  Edit card
+:ruby
+  heading 'Edit Card' do |back, forward|
+    back.title = @object.deck.name
+    back.path = deck_path(@object.deck)
+  end
 
 = error_messages_for :card
 

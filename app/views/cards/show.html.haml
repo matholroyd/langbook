@@ -1,8 +1,13 @@
-%h2 Card
+:ruby
+  heading 'Card' do |back, forward|
+    back.title = @object.deck.name
+    back.path = deck_path(@object.deck)
+    forward.title = 'Edit'
+    forward.path = edit_card_path(object)
+  end
+
 = render 'card', :object => @card
 
 %ul.actions
-  %li= link_to '<< Back', deck_path(@card.deck)
   %li= link_to 'Add another card', new_deck_card_path(@card.deck)
-  %li= link_to 'Edit', edit_object_path
   %li= link_to 'Destroy', object_path, :confirm => 'Really destroy?', :method => :delete

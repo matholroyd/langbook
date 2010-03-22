@@ -1,4 +1,8 @@
-%h1 Creating user
+:ruby
+  heading 'New User' do |back, forward|
+    back.title = 'Back'
+    back.path = root_path
+  end
 
 = error_messages_for :user
 

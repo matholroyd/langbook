@@ -1,4 +1,8 @@
-%h1 Editing user
+:ruby
+  heading 'Edit Account' do |back, forward|
+    back.title = 'Account'
+    back.path = user_path(object)
+  end
 
 = error_messages_for :user
 

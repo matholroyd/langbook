@@ -11,14 +11,22 @@
     = yield(:head)
   %body{:onload => (yield(:body_onload) || ''), :class => "#{params[:controller]}_#{params[:action]}"}
     #container
-      #header
+      #title_bar
         = render :partial => 'shared/user_bar'
         %h1= App[:name]
       #main
-        %h1= yield(:heading)
-        %flash
-          %notice= flash[:notice] unless flash[:notice].blank?
-          %error= flash[:error] unless flash[:error].blank?
+        #header
+          / %ul.actions
+          /   %li#header-back= yield(:back)
+          /   %li#header-heading
+          /     %h2= yield(:heading)
+          /   %li#header-forward= yield(:forward)
+          %table
+            %tr
+              %td#header-back= yield(:back)
+              %td#header-heading
+                %h2= yield(:heading)
+              %td#header-forward= yield(:forward)
         = yield
       #footer
         - development_section do

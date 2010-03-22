@@ -1,3 +1,11 @@
+:ruby
+  heading 'Study' do |back, forward|
+    back.title = 'Decks'
+    back.path = user_decks_path(@user)
+    forward.title = 'iCal Schedule'
+    forward.path = study_url(@user.id, 'schedule', :protocol => 'webcal')
+  end
+
 - content_for :head do
   %style{:type => "text/css"}
     :sass
@@ -31,11 +39,6 @@
         return false;
       });
     });
-  
-
-%ul.actions
-  %li= link_to 'Study schedule (iCal)', study_url(@user.id, 'schedule', :protocol => 'webcal')
-
 
 #thespinner
   = image_tag 'branding/spinner.gif'

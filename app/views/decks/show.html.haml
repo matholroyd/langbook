@@ -1,4 +1,14 @@
-%h2= object.name
+:ruby
+  heading object.name do |back, forward|
+    back.title = 'Decks'
+    back.path = user_decks_path(@deck.user)
+    forward.title = 'Add Card'
+    forward.path = new_deck_card_path(object)
+  end
+
+%ul.actions
+  %li= link_to 'Edit', edit_object_path
+  %li= link_to 'Destroy', object_path, :confirm => 'Really destroy this deck?', :method => :delete
 
 %table.cards-in-deck
   %thead 
@@ -6,8 +16,6 @@
       %th 
       %th Cards
       %th
-        %ul.actions
-          %li= link_to 'Add card', new_deck_card_path(object)
         
   %tbody
     - object.cards.each_with_index do |card, i|
@@ -19,7 +27,3 @@
             %li= link_to 'Edit', edit_card_path(card)
           
 
-%ul.actions
-  %li= link_to '<< Back', user_decks_path(@deck.user)
-  %li= link_to 'Edit', edit_object_path
-  %li= link_to 'Destroy', object_path, :confirm => 'Really destroy?', :method => :delete

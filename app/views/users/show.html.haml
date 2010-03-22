@@ -1,6 +1,12 @@
+:ruby
+  heading 'Account' do |back, forward|
+    back.title = 'Decks'
+    back.path = user_decks_path(object)
+    forward.title = 'Edit'
+    forward.path = edit_user_path(object)
+  end
+
 %div[object]
   %p.email
     = h object.email
 
-%ul.actions
-  %li= link_to 'Edit', edit_object_path
