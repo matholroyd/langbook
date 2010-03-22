@@ -31,8 +31,8 @@ Studying = function(options) {
             $(that.cardDom).show();
             that.currentCard = card;
             
-            $(that.questionDom).html(card.question);
-            $(that.answerDom).html(card.answer);
+            $(that.questionDom).html(card.question_formatted);
+            $(that.answerDom).html(card.answer_formatted);
 
             that.showQuestion();
         } else {

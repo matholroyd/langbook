@@ -31,7 +31,20 @@ describe Card do
   it 'should schedule to recall today' do
     @card.process_recall_result(0)
     @card.next_repetition.should == Date.today
-    @card.should be_scheduled_to_recall
+    @card.should be_scheduled_to_recall 
+  end
+  
+  [:question, :answer].each do |field|
+    describe field do
+      before :each do
+        @card = Card.make
+        @formatted_field = "#{field}_formatted"
+      end
+    
+      it 'should set RedCloth formatted fields before save' do
+        @card.send(@formatted_field).should == "<p>#{@card.send(field)}</p>" 
+      end
+    end
   end
   
   describe 'named_scope' do

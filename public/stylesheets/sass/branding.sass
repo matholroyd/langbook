@@ -5,10 +5,11 @@ table.cards-in-deck
     td
       :padding 2px
       :border-top 1px solid black
-      p.question, p.answer
-        label
-          :display block
-          :font-weight bold
+
+p.question, p.answer
+  label
+    :display block
+    :font-weight bold
 
 
   
@@ -20,36 +21,35 @@ table.cards-in-deck
   #status
     :text-align right
   label
+    :font-weight bold
     :margin 10px 0
     :display block 
-  .question-container .question, .answer-container .answer
+  .container
     :border 1px solid #aaa
-    :padding 10px
+    :padding 0 10px
     :margin 5px 2px
-  .question-container
-  .answer-container
-    li.qualityOfRecall
-      :margin 0
-      :padding 0
-      a
-        :color white
-    li.qualityOfRecall.q0
-      a
-        :background #600  
-    li.qualityOfRecall.q1
-      a
-        :background #900  
-    li.qualityOfRecall.q2
-      a
-        :background #c00  
-    li.qualityOfRecall.q3
-      a
-        :background #060  
-    li.qualityOfRecall.q4
-      a
-        :background #090  
-    li.qualityOfRecall.q5
-      a
-        :background #0c0  
+  li.qualityOfRecall
+    :margin 0
+    :padding 0
+    a
+      :color white
+  li.qualityOfRecall.q0
+    a
+      :background #600  
+  li.qualityOfRecall.q1
+    a
+      :background #900  
+  li.qualityOfRecall.q2
+    a
+      :background #c00  
+  li.qualityOfRecall.q3
+    a
+      :background #060  
+  li.qualityOfRecall.q4
+    a
+      :background #090  
+  li.qualityOfRecall.q5
+    a
+      :background #0c0  
 
 

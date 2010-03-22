@@ -11,10 +11,10 @@
       ,putCardUrl:'#{study_path(@user.id, :process_recall_result, :format => "json")}'
       ,spinnerDom:'#thespinner'
       ,cardDom:'.card'
-      ,questionContainerDom:'.question-container'
-      ,questionDom:'.question'
-      ,answerContainerDom:'.answer-container'
-      ,answerDom:'.answer'
+      ,questionContainerDom:'.question'
+      ,questionDom:'.question .container'
+      ,answerContainerDom:'.answer'
+      ,answerDom:'.answer .container'
       ,showAnswerDom:'#showAnswer'
       ,updateStatus: function(studying) {
         $('#status').html(studying.cardsRemaining().toString() + " cards remaining");
@@ -42,15 +42,15 @@
 
 .card
   #status
-  .question-container
+  .question
     %label Question
-    .question
+    .container
     .button-bar
       %ul.actions
         %li= link_to 'show answer', '', {:id => 'showAnswer', :class => 'main'}
-  .answer-container
+  .answer
     %label Answer
-    .answer
+    .container
     .button-bar
       %ul.actions
         %li.qualityOfRecall.q0= link_to 'Unknown', '', {:ref => 0, :class => 'main'}

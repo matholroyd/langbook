@@ -1,6 +1,5 @@
 %h2 Card
-%p= @card.question
-%p= @card.answer
+= render 'card', :object => @card
 
 %ul.actions
   %li= link_to '<< Back', deck_path(@card.deck)

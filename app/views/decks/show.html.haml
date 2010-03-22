@@ -8,19 +8,12 @@
       %th
         %ul.actions
           %li= link_to 'Add card', new_deck_card_path(object)
-      
         
   %tbody
     - object.cards.each_with_index do |card, i|
       %tr
         %td.ref= "##{(i + 1)}"
-        %td
-          %p.question
-            %label Question
-            = card.question
-          %p.answer
-            %label Answer
-            = card.answer
+        %td= render '/cards/card', :object => card
         %td.actions
           %ul.actions
             %li= link_to 'Edit', edit_card_path(card)

@@ -1,6 +1,9 @@
 class Card < ActiveRecord::Base
   include SuperMemo::SM2
+  ATTR_FOR_JSON = %w{id question_formatted answer_formatted}
+
   before_create :reset_spaced_repetition_data
+  before_save :set_formatted_fields
 
   belongs_to :deck
   
@@ -15,4 +18,12 @@ class Card < ActiveRecord::Base
     date = Date.today if date.nil?
     {:conditions => ['next_repetition = ?', date.to_s(:db)]}
   }
+
+  private 
+  
+  def set_formatted_fields
+    self.question_formatted = RedCloth.new(question).to_html
+    self.answer_formatted = RedCloth.new(answer).to_html
+  end
+  
 end
