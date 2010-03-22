@@ -41,4 +41,8 @@ Scheduling:
     - studied 20 cards, 10 more cards to study
     - studied 35 cards, 0 more cards to study
     
+    
+Language learning experience:
+
+
   
