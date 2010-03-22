@@ -8,12 +8,10 @@ describe StudyController do
     @card1 = @deck.cards.make
     @card2 = @deck.cards.make
     @card3 = @deck.cards.make
-    @card4 = @deck.cards.make
 
     @card1.update_attributes(:next_repetition => Date.today - 1)
     @card2.update_attributes(:next_repetition => Date.today)
     @card3.update_attributes(:next_repetition => Date.today + 1)
-    @card4.update_attributes(:next_repetition => nil)
     
     UserSession.create(@user)
   end
@@ -31,7 +29,7 @@ describe StudyController do
       before :each do
         get :cards, :user_id => @user.id, :format => 'json'
       end
-      
+       
       it 'should return success' do
         response.status.should == '200 OK'
       end
