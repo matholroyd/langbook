@@ -2,7 +2,7 @@
   heading 'Study' do |back, forward|
     back.title = 'Decks'
     back.path = user_decks_path(@user)
-    forward.title = 'iCal Schedule'
+    forward.title = 'Study Plan'
     forward.path = study_url(@user.id, 'schedule', :protocol => 'webcal')
   end
 
@@ -59,6 +59,7 @@
         %li.qualityOfRecall.q0= link_to 'Unknown', '', {:ref => 0, :class => 'main'}
         %li.qualityOfRecall.q1= link_to 'Bad', '', {:ref => 1, :class => 'main'}
         %li.qualityOfRecall.q2= link_to 'Almost', '', {:ref => 2, :class => 'main'}
+      %ul.actions
         %li.qualityOfRecall.q3= link_to 'Pass', '', {:ref => 3, :class => 'main'}
         %li.qualityOfRecall.q4= link_to 'Good', '', {:ref => 4, :class => 'main'}
         %li.qualityOfRecall.q5= link_to 'Perfect', '', {:ref => 5, :class => 'main'}

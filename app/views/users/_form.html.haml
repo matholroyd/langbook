@@ -1,4 +1,6 @@
-= form.inputs :email, :password, :password_confirmation
+- form.inputs do
+  = form.input :email, :as => 'email'
+= form.inputs :password, :password_confirmation
 - form.buttons do
   = form.commit_button
   %ul.actions

@@ -15,12 +15,12 @@ function _ajax_request(url, data, callback, type, async, method) {
 
 jQuery.extend({
     put: function(url, data, callback, type, async) {
-        return _ajax_request(url, data, callback, type, true, 'PUT');
+        return _ajax_request(url, data, callback, type, async, 'PUT');
     },
     delete_: function(url, data, callback, type, async) {
-        return _ajax_request(url, data, callback, type, true, 'DELETE');
+        return _ajax_request(url, data, callback, type, async, 'DELETE');
     },
     putSync: function(url, data, callback, type, async) {
-        return _ajax_request(url, data, callback, type, false, 'PUT');
+        return _ajax_request(url, data, callback, type, async, 'PUT');
     }
 });

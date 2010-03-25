@@ -22,6 +22,7 @@ Studying = function(options) {
     that.studyNextCard = function() {
         var card = that.queue.dequeue();
         
+        $(that.spinnerDom).hide();
         $(that.questionDom).hide();
         $(that.answerContainerDom).hide();
         
@@ -51,12 +52,17 @@ Studying = function(options) {
     }
     
     that.processQualityOfRecall = function(quality_of_recall) {
+        $(that.questionDom).hide();
+        $(that.showAnswerDom).hide();
+        $(that.spinnerDom).show();
+
         $.put(that.putCardUrl, {id:that.currentCard.id, quality_of_recall:quality_of_recall}, function(data) {
+            
             if(data['scheduled_to_recall?']) {
                 that.queue.enqueue(that.currentCard);
             } 
             studying.studyNextCard();
-        }, 'json');
+        }, 'json', false);
     }
     
     that.cardsRemaining = function() {

@@ -45,3 +45,12 @@ Formtastic::SemanticFormBuilder.inline_order = [:hints, :errors, :input]
 # Default value: false. Overridden for specific fields by setting value to true,
 # i.e. :label => true, or :hint => true (or opposite depending on initialized value)
 # Formtastic::SemanticFormBuilder.i18n_lookups_by_default = false
+
+
+module HTML5
+  def email_input(method, options)
+    basic_input_helper(:text_field, :string, method, options).sub(/type="text"/, 'type="email"')
+  end
+end
+
+Formtastic::SemanticFormBuilder.send(:include, HTML5)

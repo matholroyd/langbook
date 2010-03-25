@@ -3,7 +3,10 @@
 = error_messages_for(:user_session)
 
 - semantic_form_for @user_session, :url => user_session_path do |f|
-  = f.inputs :email, :password
+  - f.inputs do
+    = f.input :email, :as => 'email'
+    = f.input :password
+    = f.input :remember_me, :as => 'boolean'
   - f.buttons do |b|
     = f.commit_button :label => 'Log in'
 
