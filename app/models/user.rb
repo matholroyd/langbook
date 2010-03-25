@@ -24,8 +24,8 @@ class User < ActiveRecord::Base
         if length > 0
           self.event do |event|
             event.summary = "Pratice #{length} cards"
-            event.dtstart = (date + user.time_scheduled_for_recalls.hours).to_datetime.utc
-            event.dtend = (date + user.time_scheduled_for_recalls.hours + 1.hour).to_datetime.utc
+            event.dtstart = (date + user.time_scheduled_for_recalls.hours).to_datetime.with_floating_timezone
+            event.dtend = (date + user.time_scheduled_for_recalls.hours + 1.hour).to_datetime.with_floating_timezone
             event.alarm do |alarm|
               alarm.description = "Practice"
             end
