@@ -9,14 +9,14 @@ class Card < ActiveRecord::Base
   
   validates_presence_of :question, :answer, :deck_id
 
-  named_scope :unstudied, :conditions => {:last_studied => nil, :next_repetition => nil}
+  named_scope :unstudied, :conditions => {:last_studied => nil, :next_repetition => nil}, :include => :deck
   named_scope :scheduled_to_recall_up_to, lambda { |date|
     date = Date.today if date.nil?
-    {:conditions => ['next_repetition <= ?', date.to_s(:db)], :order => 'next_repetition ASC'}
+    {:conditions => ['next_repetition <= ?', date.to_s(:db)], :order => 'next_repetition ASC', :include => :deck}
   }
   named_scope :scheduled_to_recall_on, lambda { |date|
     date = Date.today if date.nil?
-    {:conditions => ['next_repetition = ?', date.to_s(:db)]}
+    {:conditions => ['next_repetition = ?', date.to_s(:db)], :include => :deck}
   }
   
   private 
