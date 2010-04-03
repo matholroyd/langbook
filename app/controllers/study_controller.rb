@@ -17,7 +17,7 @@ class StudyController < ApplicationController
   def cards
     @cards = @user.pending_cards_to_study
     respond_to do |format|
-      format.json { render :json => @cards.to_json(:only => Card::ATTR_FOR_JSON) }
+      format.json { render :json => @cards.to_json(Card::ATTR_FOR_JSON) }
     end
   end
   

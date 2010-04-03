@@ -11,8 +11,6 @@
     :sass
       .card, #finished
         :display none
-      
-        
 
   :javascript
     var flashCards;
@@ -24,6 +22,7 @@
       ,questionDom:'.question .container'
       ,answerContainerDom:'.answer'
       ,answerDom:'.answer .container'
+      ,deckDom:'#deck'
       ,showAnswerDom:'#showAnswer'
       ,finishedDom: '#finished'
       ,updateStatus: function(studying) {
@@ -46,6 +45,7 @@
   = image_tag 'branding/spinner.gif'
 
 .card
+  #deck
   #status
   .question
     %label Question

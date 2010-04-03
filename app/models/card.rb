@@ -1,6 +1,6 @@
 class Card < ActiveRecord::Base
   include SuperMemo::SM2
-  ATTR_FOR_JSON = %w{id question_formatted answer_formatted deck.name}
+  ATTR_FOR_JSON = {:only => %w{id question_formatted answer_formatted}, :include => {:deck => {:only => [:name]}}}
 
   before_create :reset_spaced_repetition_data
   before_save :set_formatted_fields
@@ -18,7 +18,7 @@ class Card < ActiveRecord::Base
     date = Date.today if date.nil?
     {:conditions => ['next_repetition = ?', date.to_s(:db)]}
   }
-
+  
   private 
   
   def set_formatted_fields
