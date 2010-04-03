@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
             event.dtstart = (date + user.time_scheduled_for_recalls.hours).to_datetime.with_floating_timezone
             event.dtend = (date + user.time_scheduled_for_recalls.hours + 1.hour).to_datetime.with_floating_timezone
             event.alarm do |alarm|
-              alarm.description = "Practice"
+              alarm.description = "Practice #{length} cards"
             end
           end
         end

@@ -16,7 +16,7 @@ describe User do
     @card3.update_attributes(:next_repetition => Date.today - 1)
     @card4.update_attributes(:next_repetition => Date.today + 2)
     @card5.update_attributes(:next_repetition => Date.today + 2)
-  end
+  end 
   
   describe 'scheduling' do
     
@@ -24,12 +24,12 @@ describe User do
       @user.schedule.events.length.should == 2
       
       today = @user.schedule.events[0]
-      today.dtstart.should == (Date.today + @user.time_scheduled_for_recalls.hours).to_datetime
-      today.dtend.should == (Date.today + @user.time_scheduled_for_recalls.hours + 1.hour).to_datetime
+      today.dtstart.should == (Date.today + @user.time_scheduled_for_recalls.hours).to_datetime.to_s
+      today.dtend.should == (Date.today + @user.time_scheduled_for_recalls.hours + 1.hour).to_datetime.to_s
       
       day_after_tomorrow = @user.schedule.events[1]
-      day_after_tomorrow.dtstart.should == ((Date.today + 2) + @user.time_scheduled_for_recalls.hours).to_datetime
-      day_after_tomorrow.dtend.should == ((Date.today + 2) + @user.time_scheduled_for_recalls.hours + 1.hour).to_datetime
+      day_after_tomorrow.dtstart.should == ((Date.today + 2) + @user.time_scheduled_for_recalls.hours).to_datetime.to_s
+      day_after_tomorrow.dtend.should == ((Date.today + 2) + @user.time_scheduled_for_recalls.hours + 1.hour).to_datetime.to_s
     end
     
   end
