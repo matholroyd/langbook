@@ -3,8 +3,8 @@ Studying = function(options) {
     
     that.currentCard = null;
     
-    that.loadCards = function() {
-        $.getJSON(that.getCardsUrl, function(data) {
+    that.loadCards = function(path) {
+        $.getJSON(path, function(data) {
             $(that.spinnerDom).hide();
             that.setupQueue(data);
             that.studyNextCard();
@@ -38,6 +38,7 @@ Studying = function(options) {
             that.showQuestion();
         } else {
             $(that.cardDom).hide();
+            $(that.finishedDom).show();
         }
     };
     

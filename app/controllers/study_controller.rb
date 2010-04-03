@@ -3,7 +3,12 @@ class StudyController < ApplicationController
   before_filter :find_user
 
   def start
-  end
+    if params[:deck_id] 
+      @card_path = deck_cards_path(:deck_id => params[:deck_id], :format => 'json')
+    else
+      @card_path = study_path(@user.id, :cards, :date => "today", :format => 'json')
+    end
+  end 
 
   def schedule
     send_data(@user.schedule.export, :type => 'text/calendar', :disposition => 'inline')

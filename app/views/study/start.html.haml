@@ -9,14 +9,15 @@
 - content_for :head do
   %style{:type => "text/css"}
     :sass
-      .card
+      .card, #finished
         :display none
+      
+        
 
   :javascript
     var flashCards;
     var studying = Studying({
-      getCardsUrl:'#{study_path(@user.id, :cards, :date => "today")}'
-      ,putCardUrl:'#{study_path(@user.id, :process_recall_result, :format => "json")}'
+      putCardUrl:'#{study_path(@user.id, :process_recall_result, :format => "json")}'
       ,spinnerDom:'#thespinner'
       ,cardDom:'.card'
       ,questionContainerDom:'.question'
@@ -24,12 +25,13 @@
       ,answerContainerDom:'.answer'
       ,answerDom:'.answer .container'
       ,showAnswerDom:'#showAnswer'
+      ,finishedDom: '#finished'
       ,updateStatus: function(studying) {
         $('#status').html(studying.cardsRemaining().toString() + " cards remaining");
       }
     });
     $(document).ready(function() { 
-      studying.loadCards();
+      studying.loadCards('#{@card_path}');
       $('a#showAnswer').click(function() {
         studying.showAnswer();
         return false;
@@ -64,3 +66,10 @@
         %li.qualityOfRecall.q4= link_to 'Good', '', {:ref => 4, :class => 'main'}
         %li.qualityOfRecall.q5= link_to 'Perfect', '', {:ref => 5, :class => 'main'}
   
+#finished
+  %p You have no more cards to study.
+  %p Would you like to re-study one of the following decks?
+  %ul.actions
+    - @user.decks.each do |deck|
+      %li.new_line
+        = link_to deck.name, study_path(@user.id, :start, :deck_id => deck.id)

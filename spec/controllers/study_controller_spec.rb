@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
-
+ 
 describe StudyController do
-  integrate_views
+  # integrate_views 
 
   before :each do
     @user = User.make
@@ -16,12 +16,19 @@ describe StudyController do
     @card3.update_attributes(:next_repetition => Date.today + 1)
     
     UserSession.create(@user)
-  end
+  end 
   
   describe "GET start" do
     it "should be successful" do
       get :start, :user_id => @user.id
       response.status.should == '200 OK'
+      assigns(:card_path).should == study_path(@user.id, :cards, :date => "today", :format => 'json')
+    end
+    
+    it 'should return specified decks cards' do
+      get :start, :user_id => @user.id, :deck_id => @deck.id
+      response.status.should == '200 OK'
+      assigns(:card_path).should == deck_cards_path(:deck_id => @deck.id, :format => 'json')
     end
   end
   

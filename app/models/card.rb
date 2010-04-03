@@ -1,6 +1,6 @@
 class Card < ActiveRecord::Base
   include SuperMemo::SM2
-  ATTR_FOR_JSON = %w{id question_formatted answer_formatted}
+  ATTR_FOR_JSON = %w{id question_formatted answer_formatted deck.name}
 
   before_create :reset_spaced_repetition_data
   before_save :set_formatted_fields
