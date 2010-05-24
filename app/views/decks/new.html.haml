@@ -7,6 +7,6 @@
 
 = error_messages_for :deck
 
-- semantic_form_for [@user, @deck] do |f|
+- semantic_form_for [@user, @deck], :html => { :multipart => true } do |f|
   = render :partial => "form", :object => f, :locals => {:cancel_link => user_decks_path(@user)}
 

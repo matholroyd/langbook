@@ -17,5 +17,7 @@
         %td.card_count= deck.cards.count
         %td
           %ul.actions
+            %li= link_to 'Study deck', study_path(@user.id, :start, :deck_id => deck.id)
             %li= link_to 'Add card', new_deck_card_path(deck)
+            %li= link_to 'Destroy', deck_path(deck), :method => :delete
         

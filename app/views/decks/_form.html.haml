@@ -1,4 +1,11 @@
-= form.inputs :name
+- form.inputs do
+  = form.input :name
+  - if form.object.new_record?
+    %li
+      %label Import cards from file
+      %p.inline-hints Use a CSV file where each row is in the format "Question", "Answer"
+      = file_field_tag :file
+
 - form.buttons do
   = form.commit_button
   %ul.actions

@@ -18,6 +18,7 @@ Rails::Initializer.run do |config|
   config.gem "resource_controller"
   config.gem "ri_cal"
   config.gem 'RedCloth'
+  config.gem 'fastercsv'
   
   config.time_zone = 'UTC'
   config.active_record.timestamped_migrations = false
@@ -26,3 +27,4 @@ end
 ActiveRecord::Base.include_root_in_json = false
 
 App = YAML.load(File.read(RAILS_ROOT + "/config/config.yml"))[RAILS_ENV].recursively!(&:symbolize_keys)
+
