@@ -15,7 +15,7 @@ class StudyController < ApplicationController
   end
   
   def cards
-    @cards = @user.pending_cards_to_study
+    @cards = @user.pending_cards_to_study.shuffle
     respond_to do |format|
       format.json { render :json => @cards.to_json(Card::ATTR_FOR_JSON) }
     end
