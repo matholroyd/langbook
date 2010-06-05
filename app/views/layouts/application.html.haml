@@ -23,8 +23,9 @@
             %td#header-forward= yield(:forward)
       #main= yield
       #footer
+        %hr
+        =App[:name]
         - development_section do
-          %hr
           %ul.actions
             %li= link_to 'normal', '?browser=normal'
             %li= link_to 'iphone', '?browser=iphone'
