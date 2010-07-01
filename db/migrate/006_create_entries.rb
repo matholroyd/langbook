@@ -34,10 +34,12 @@ class CreateEntries < ActiveRecord::Migration
 
     create_table :chinese_characters, :force => true do |t|
       t.string :character, :limit => 5
+      t.string :transliteration, :limit => 8
       t.string :transliteration_py, :limit => 8
       t.string :transliteration_gr, :limit => 8
     end
     
+    add_index :chinese_characters, [:transliteration]
     add_index :chinese_characters, [:transliteration_py]
     add_index :chinese_characters, [:transliteration_gr]
   end

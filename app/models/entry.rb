@@ -6,9 +6,7 @@ class Entry < ActiveRecord::Base
   validates_presence_of :user_id, :standard_form, :transliteration, :language_id, :meaning_language_id
 
   def set_transliteration_via_standard_form
-    self.transliteration = language.transliterate(standard_form)
+    language.set_transliterate(self)
   end
-  
-  
   
 end

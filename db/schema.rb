@@ -33,10 +33,12 @@ ActiveRecord::Schema.define(:version => 6) do
 
   create_table "chinese_characters", :force => true do |t|
     t.string "character",          :limit => 5
+    t.string "transliteration",    :limit => 8
     t.string "transliteration_py", :limit => 8
     t.string "transliteration_gr", :limit => 8
   end
 
+  add_index "chinese_characters", ["transliteration"], :name => "index_chinese_characters_on_transliteration"
   add_index "chinese_characters", ["transliteration_gr"], :name => "index_chinese_characters_on_transliteration_gr"
   add_index "chinese_characters", ["transliteration_py"], :name => "index_chinese_characters_on_transliteration_py"
 

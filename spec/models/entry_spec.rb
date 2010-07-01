@@ -22,7 +22,7 @@ describe Entry do
 
   describe Language::German do
     before :each do
-      @entry = Entry.make(:language_id => Language::German)
+      @entry = Entry.make(:language => Language::German)
     end
     
     it 'should auto fillout transliteration' do
@@ -34,7 +34,7 @@ describe Entry do
 
   describe Language::Chinese do
     before :each do
-      @entry = Entry.make(:language_id => Language::Chinese)
+      @entry = Entry.make(:language => Language::Chinese)
     end
     
     it 'should auto fillout transliteration' do

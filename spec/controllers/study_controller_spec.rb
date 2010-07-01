@@ -44,7 +44,10 @@ describe StudyController do
       end
     
       it 'should get the flash cards for today' do
-        assigns(:cards).should == [@card1, @card2]
+        cards = assigns(:cards)
+        cards.length.should == 2
+        cards.include?(@card1).should be_true
+        cards.include?(@card2).should be_true
       end
       
     end
