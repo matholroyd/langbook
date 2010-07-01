@@ -43,6 +43,13 @@ describe Entry do
       @entry.transliteration.should == 'ni'
       @entry.transliteration_2.should == 'nĭ'
       @entry.transliteration_3.should == 'nii'
+
+      @entry.update_attributes(:standard_form => '你的')
+      @entry.set_transliteration_via_standard_form
+      @entry.transliteration.should == 'nide'
+      @entry.transliteration_2.should == 'nĭde'
+      @entry.transliteration_3.should == 'nii.de'
+
     end
   end
   

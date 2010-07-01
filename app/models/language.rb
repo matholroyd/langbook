@@ -10,10 +10,17 @@ class Language < LocalRecord
   
   class << Chinese
     def set_transliterate(entry)
-      cc = ChineseCharacter.find_by_character(entry.standard_form)
-      entry.transliteration = cc.transliteration
-      entry.transliteration_2 = cc.transliteration_py
-      entry.transliteration_3 = cc.transliteration_gr
+      entry.transliteration = ""
+      entry.transliteration_2 = ""
+      entry.transliteration_3 = ""
+
+      entry.standard_form.each_char do |char|
+        cc = ChineseCharacter.find_by_character(char)
+        DBC.assert(cc, "Could not find => #{char.inspect}")
+        entry.transliteration += cc.transliteration
+        entry.transliteration_2 += cc.transliteration_py
+        entry.transliteration_3 += cc.transliteration_gr
+      end
     end
   end
 end
