@@ -33,20 +33,19 @@ class CreateEntries < ActiveRecord::Migration
     add_index :entry_meanings, [:language_id]
 
     create_table :chinese_characters, :force => true do |t|
-      t.string :character, :limit => 4
-      t.string :transliteration, :limit => 10
-      t.string :transliteration_2, :limit => 10
-      t.string :transliteration_3, :limit => 10
+      t.string :character, :limit => 5
+      t.string :transliteration_py, :limit => 8
+      t.string :transliteration_gr, :limit => 8
     end
     
-    add_index :chinese_characters, [:transliteration, :character]
-    add_index :chinese_characters, [:character, :transliteration]
+    add_index :chinese_characters, [:transliteration_py]
+    add_index :chinese_characters, [:transliteration_gr]
   end
 
   def self.down
-    # remove_index :chinese_characters, [:transliteration, :character]
-    # remove_index :chinese_characters, [:character, :transliteration]
-    # drop_table :chinese_characters
+    remove_index :chinese_characters, [:transliteration_py]
+    remove_index :chinese_characters, [:transliteration_gr]
+    drop_table :chinese_characters
     
     remove_index :entry_meanings, [:entry_id, :position]
     remove_index :entry_meanings, [:language_id]

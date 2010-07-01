@@ -32,14 +32,13 @@ ActiveRecord::Schema.define(:version => 6) do
   add_index "cards", ["next_repetition", "deck_id"], :name => "index_cards_on_next_repetition_and_deck_id"
 
   create_table "chinese_characters", :force => true do |t|
-    t.string "character",         :limit => 4
-    t.string "transliteration",   :limit => 10
-    t.string "transliteration_2", :limit => 10
-    t.string "transliteration_3", :limit => 10
+    t.string "character",          :limit => 5
+    t.string "transliteration_py", :limit => 8
+    t.string "transliteration_gr", :limit => 8
   end
 
-  add_index "chinese_characters", ["character", "transliteration"], :name => "index_chinese_characters_on_character_and_transliteration"
-  add_index "chinese_characters", ["transliteration", "character"], :name => "index_chinese_characters_on_transliteration_and_character"
+  add_index "chinese_characters", ["transliteration_gr"], :name => "index_chinese_characters_on_transliteration_gr"
+  add_index "chinese_characters", ["transliteration_py"], :name => "index_chinese_characters_on_transliteration_py"
 
   create_table "decks", :force => true do |t|
     t.string   "name"
