@@ -30,8 +30,9 @@ end
 Entry.blueprint do
   user
   standard_form {'你'}
-  pronounciation { 'ni3' }
+  transliteration { 'ni' }
   language_id { Language::Chinese.id }
+  meaning_language_id { Language::English.id }
 end
   
   

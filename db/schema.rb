@@ -31,6 +31,16 @@ ActiveRecord::Schema.define(:version => 6) do
   add_index "cards", ["deck_id", "next_repetition"], :name => "index_cards_on_deck_id_and_next_repetition"
   add_index "cards", ["next_repetition", "deck_id"], :name => "index_cards_on_next_repetition_and_deck_id"
 
+  create_table "chinese_characters", :force => true do |t|
+    t.string "character",         :limit => 4
+    t.string "transliteration",   :limit => 10
+    t.string "transliteration_2", :limit => 10
+    t.string "transliteration_3", :limit => 10
+  end
+
+  add_index "chinese_characters", ["character", "transliteration"], :name => "index_chinese_characters_on_character_and_transliteration"
+  add_index "chinese_characters", ["transliteration", "character"], :name => "index_chinese_characters_on_transliteration_and_character"
+
   create_table "decks", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
@@ -43,10 +53,11 @@ ActiveRecord::Schema.define(:version => 6) do
   create_table "entries", :force => true do |t|
     t.integer  "user_id"
     t.string   "standard_form"
-    t.string   "pronounciation"
-    t.string   "pronounciation_2"
-    t.string   "pronounciation_3"
     t.integer  "language_id"
+    t.string   "transliteration"
+    t.string   "transliteration_2"
+    t.string   "transliteration_3"
+    t.integer  "meaning_language_id"
     t.integer  "tone_id"
     t.integer  "gender_id"
     t.integer  "char_count"
@@ -54,9 +65,7 @@ ActiveRecord::Schema.define(:version => 6) do
     t.datetime "updated_at"
   end
 
-  add_index "entries", ["language_id", "pronounciation", "user_id"], :name => "index_entries_on_language_id_and_pronounciation_and_user_id"
-  add_index "entries", ["pronounciation", "language_id", "user_id"], :name => "index_entries_on_pronounciation_and_language_id_and_user_id"
-  add_index "entries", ["user_id", "language_id", "pronounciation"], :name => "index_entries_on_user_id_and_language_id_and_pronounciation"
+  add_index "entries", ["user_id", "language_id", "transliteration"], :name => "index_entries_on_user_id_and_language_id_and_transliteration"
 
   create_table "entry_meanings", :force => true do |t|
     t.integer  "entry_id"
