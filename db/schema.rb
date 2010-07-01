@@ -40,6 +40,37 @@ ActiveRecord::Schema.define(:version => 6) do
 
   add_index "decks", ["user_id"], :name => "index_decks_on_user_id"
 
+  create_table "entries", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "standard_form"
+    t.string   "pronounciation"
+    t.string   "pronounciation_2"
+    t.string   "pronounciation_3"
+    t.integer  "language_id"
+    t.integer  "tone_id"
+    t.integer  "gender_id"
+    t.integer  "char_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "entries", ["language_id", "pronounciation", "user_id"], :name => "index_entries_on_language_id_and_pronounciation_and_user_id"
+  add_index "entries", ["pronounciation", "language_id", "user_id"], :name => "index_entries_on_pronounciation_and_language_id_and_user_id"
+  add_index "entries", ["user_id", "language_id", "pronounciation"], :name => "index_entries_on_user_id_and_language_id_and_pronounciation"
+
+  create_table "entry_meanings", :force => true do |t|
+    t.integer  "entry_id"
+    t.integer  "position"
+    t.text     "meaning"
+    t.integer  "language_id"
+    t.text     "tag_list_cache"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "entry_meanings", ["entry_id", "position"], :name => "index_entry_meanings_on_entry_id_and_position"
+  add_index "entry_meanings", ["language_id"], :name => "index_entry_meanings_on_language_id"
+
   create_table "translations", :force => true do |t|
     t.integer  "user_id"
     t.text     "original_text"

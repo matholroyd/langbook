@@ -26,3 +26,12 @@ Card.blueprint do
   question { Sham.body }
   answer { Sham.body }
 end
+
+Entry.blueprint do
+  user
+  standard_form {'你'}
+  pronounciation { 'ni3' }
+  language_id { Language::Chinese.id }
+end
+  
+  
