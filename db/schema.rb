@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(:version => 6) do
 
   add_index "entries", ["user_id", "language_id", "transliteration"], :name => "index_entries_on_user_id_and_language_id_and_transliteration"
 
-  create_table "entry_meanings", :force => true do |t|
+  create_table "meanings", :force => true do |t|
     t.integer  "entry_id"
     t.integer  "position"
     t.text     "meaning"
@@ -78,8 +78,8 @@ ActiveRecord::Schema.define(:version => 6) do
     t.datetime "updated_at"
   end
 
-  add_index "entry_meanings", ["entry_id", "position"], :name => "index_entry_meanings_on_entry_id_and_position"
-  add_index "entry_meanings", ["language_id"], :name => "index_entry_meanings_on_language_id"
+  add_index "meanings", ["entry_id", "position"], :name => "index_meanings_on_entry_id_and_position"
+  add_index "meanings", ["language_id"], :name => "index_meanings_on_language_id"
 
   create_table "translations", :force => true do |t|
     t.integer  "user_id"

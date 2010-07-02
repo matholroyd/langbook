@@ -1,0 +1,12 @@
+:ruby
+  heading 'New Entry' do |back, forward|
+    back.title = 'Entries'
+    back.path = user_entries_path(@user)
+  end
+
+
+= error_messages_for :entry
+
+- semantic_form_for [@user, @entry] do |f|
+  = render :partial => "form", :object => f, :locals => {:cancel_link => user_entries_path(@user)}
+

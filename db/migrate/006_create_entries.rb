@@ -19,7 +19,7 @@ class CreateEntries < ActiveRecord::Migration
     
     add_index :entries, [:user_id, :language_id, :transliteration]
     
-    create_table :entry_meanings, :force => true do |t|
+    create_table :meanings, :force => true do |t|
       t.integer :entry_id
       t.integer :position
       t.text :meaning
@@ -29,8 +29,8 @@ class CreateEntries < ActiveRecord::Migration
       t.timestamps
     end
     
-    add_index :entry_meanings, [:entry_id, :position]
-    add_index :entry_meanings, [:language_id]
+    add_index :meanings, [:entry_id, :position]
+    add_index :meanings, [:language_id]
 
     create_table :chinese_characters, :force => true do |t|
       t.string :character, :limit => 5
@@ -49,9 +49,9 @@ class CreateEntries < ActiveRecord::Migration
     remove_index :chinese_characters, [:transliteration_gr]
     drop_table :chinese_characters
     
-    remove_index :entry_meanings, [:entry_id, :position]
-    remove_index :entry_meanings, [:language_id]
-    drop_table :entry_meanings
+    remove_index :meanings, [:entry_id, :position]
+    remove_index :meanings, [:language_id]
+    drop_table :meanings
 
     remove_index :entries, [:user_id, :language_id, :transliteration]
     drop_table :entries 

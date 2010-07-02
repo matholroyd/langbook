@@ -3,7 +3,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :user_session, :except => [:edit, :show, :update]
 
   map.resources :users, :shallow => true do |users|
-    users.resources :decks, :shallow => true do |decks|
+    users.resources :entries
+    users.resources :decks do |decks|
       decks.resources :cards
     end
   end

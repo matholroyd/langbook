@@ -1,0 +1,20 @@
+:ruby
+  heading 'Entries' do |back, forward|
+    forward.title = 'New Entry'
+    forward.path = new_user_entry_path(@user)
+  end
+
+%table
+  %thead
+    %tr
+      %th Entries
+      %th
+  %tbody
+    - @entries.each do |entry|
+      %tr
+        %td
+          %span.standard_form= entry.standard_form
+        %td
+          %ul.actions
+            %li= link_to 'Destroy', entry_path(entry), :method => :delete
+        

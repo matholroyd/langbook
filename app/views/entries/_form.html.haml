@@ -1,0 +1,13 @@
+- form.inputs do
+  = form.input :standard_form
+  = form.input :transliteration
+  = form.input :transliteration_2
+  = form.input :transliteration_3
+  = form.input :meaning_language_id
+  = form.input :tone_id
+  = form.input :gender_id
+
+- form.buttons do
+  = form.commit_button
+  %ul.actions
+    %li= link_to 'Cancel', cancel_link

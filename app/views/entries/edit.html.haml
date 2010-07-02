@@ -1,0 +1,11 @@
+:ruby
+  heading 'Edit Entry' do |back, forward|
+    back.title = 'Back'
+    back.path = entry_path(@entry)
+  end
+
+= error_messages_for :entry
+
+- semantic_form_for @entry do |f|
+  = render :partial => "form", :object => f, :locals => {:cancel_link => entry_path(@entry)}
+

@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   
   has_many :decks
   has_many :cards, :through => :decks
+  has_many :entries
 
   default_value_for :daily_card_quota, 30
 
