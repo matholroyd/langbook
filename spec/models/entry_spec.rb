@@ -32,9 +32,9 @@ describe Entry do
     end
   end
 
-  describe Language::Chinese do
+  describe Language::Mandarin do
     before :each do
-      @entry = Entry.make(:language => Language::Chinese)
+      @entry = Entry.make(:language => Language::Mandarin)
     end
     
     it 'should auto fillout transliteration' do

@@ -31,7 +31,7 @@ Entry.blueprint do
   user
   standard_form {'你'}
   transliteration { 'ni' }
-  language_id { Language::Chinese.id }
+  language_id { Language::Mandarin.id }
   meaning_language_id { Language::English.id }
 end
   

@@ -1,13 +1,25 @@
 - form.inputs do
-  = form.input :standard_form
-  = form.input :transliteration
-  = form.input :transliteration_2
-  = form.input :transliteration_3
-  = form.input :meaning_language_id
-  = form.input :tone_id
-  = form.input :gender_id
+  = form.input :language
+  = form.input :standard_form, :label => 'Entry', :hint => "Enter in the language's standard form"
+  = form.input :transliteration, :label => "Transliteration (no tones)"
+  = form.input :transliteration_2, :label => "Transliteration (pinyin)"
+  = form.input :transliteration_3, :label => "Transliteration (GR)"
 
 - form.buttons do
   = form.commit_button
   %ul.actions
     %li= link_to 'Cancel', cancel_link
+
+
+%canvas#drawing{:width => "300", :height => "200"}
+  %p 
+    %strong Alert!
+    You don't have a HTML5 compatible browser! Download and install the one of the following browsers:
+    %ul 
+      %li Firefox 
+      %li Google Chrome
+      %li Safari 4+
+      %li IE 8+
+
+:javascript
+  Drawing.init('#drawing');

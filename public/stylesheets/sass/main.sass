@@ -1,62 +1,7 @@
+@import constants
+@import defaults_and_standards.sass
 @import layout.sass
 @import branding.sass
 @import languages.sass
+@import entry.sass
 
-body, .ui-widget
-  :font
-    :size 0.9em
-    :family Verdana,Arial,sans-serif
-    
-h1, h2, h3, h4, h5, h6
-  :font
-    :family helvetica, sans-serif
-    :weight normal
-
-a 
-  :color blue
-  
-a.main  
-  :padding 8px 12px
-  :border-radius = !radius
-  :-moz-border-radius = !radius
-  :-webkit-border-radius = !radius
-  :background #227FFF
-  :color #fff
-
-table  
-  :border-collapse collapse
-  thead
-    th 
-      :text-align left
-    th
-      a
-        :font-weight normal
-  tbody  
-    td
-      :padding 5px
-      :margin 0
-    td.actions, td.ref
-      :padding 15px 5px
-      :vertical-align top
-    td.ref
-      :color green
-    
-
-ul.actions
-  li.new_line
-    :display block
-    :padding 5px
-    :margin 15px 5px
-  li 
-    :display inline-block
-    :list-style none
-    :padding 0 5px
-    :margin 0 5px
-    a
-      :font-size 80%
-      :text-transform uppercase
-      :text-decoration none
-
-  
-
-  

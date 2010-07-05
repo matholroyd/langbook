@@ -1,14 +1,15 @@
 class Language < LocalRecord
-  Language[1, 'Chinese']
+  Language[1, 'Mandarin']
   Language[2, 'English']
   Language[3, 'German']
   Language[4, 'Russian']
+  Language[5, 'Spanish']
   
   def set_transliterate(entry)
     entry.transliteration = entry.standard_form
   end
   
-  class << Chinese
+  class << Mandarin
     def set_transliterate(entry)
       entry.transliteration = ""
       entry.transliteration_2 = ""
