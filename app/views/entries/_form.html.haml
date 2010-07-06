@@ -4,14 +4,14 @@
   = form.input :transliteration, :label => "Transliteration (no tones)"
   = form.input :transliteration_2, :label => "Transliteration (pinyin)"
   = form.input :transliteration_3, :label => "Transliteration (GR)"
-
+  = form.input :image_data, :as => :hidden
 - form.buttons do
   = form.commit_button
   %ul.actions
     %li= link_to 'Cancel', cancel_link
 
 
-%canvas#drawing{:width => "300", :height => "200"}
+%canvas#drawing{:width => "500", :height => "300"}
   %p 
     %strong Alert!
     You don't have a HTML5 compatible browser! Download and install the one of the following browsers:
@@ -23,3 +23,7 @@
 
 :javascript
   Drawing.init('#drawing');
+  $('#drawing').mouseup(function() {
+    $('#entry_image_data').val($('#drawing')[0].toDataURL());
+  });
+  

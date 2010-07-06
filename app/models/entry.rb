@@ -5,6 +5,8 @@ class Entry < ActiveRecord::Base
   
   validates_presence_of :user_id, :standard_form, :transliteration, :language_id
 
+  attr_accessor :image_data
+
   def set_transliteration_via_standard_form
     language.set_transliterate(self)
   end
