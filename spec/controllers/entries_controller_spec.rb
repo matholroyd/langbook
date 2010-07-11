@@ -9,22 +9,20 @@ describe EntriesController do
     
     UserSession.create(@user)
   end
-  
-  describe "GET show" do
+
+  describe "GET index" do
     it "should be successful" do
-      get :show, :id => @entry.id
+      get :index, :user_id => @user
       response.status.should == '200 OK'
     end
   end
-
+  
   describe "GET edit" do
     it "should be successful" do
       get :edit, :id => @entry.id
       response.status.should == '200 OK'
     end
   end
-  
-  
   
 
 end

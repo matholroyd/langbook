@@ -1,9 +1,11 @@
 - form.inputs do
   = form.input :language
-  = form.input :standard_form, :label => 'Entry', :hint => "Enter in the language's standard form"
-  = form.input :transliteration, :label => "Transliteration (no tones)"
-  = form.input :transliteration_2, :label => "Transliteration (pinyin)"
-  = form.input :transliteration_3, :label => "Transliteration (GR)"
+  = form.input :standard_form, :label => 'Entry'
+- form.inputs :class => 'mandarin' do
+  = form.input :transliteration, :label => "Pinyin (no tones)"
+  = form.input :transliteration_2, :label => "Pinyin"
+  = form.input :transliteration_3, :label => "Gwoyeu Romantzyh"
+- form.inputs do
   = form.input :image_data, :as => :hidden
 - form.buttons do
   = form.commit_button
@@ -25,5 +27,25 @@
   Drawing.init('#drawing');
   $('#drawing').mouseup(function() {
     $('#entry_image_data').val($('#drawing')[0].toDataURL());
-  });
-  
+  });  
+  var updateFields = function() {
+    var id = $('select#entry_language_id').val();
+    var language;
+    if(id == "") {
+      language = "";
+    } else {
+      language = $('select#entry_language_id option')[id].text;
+    }
+    switch(language) {
+      case 'Mandarin':
+        $('.mandarin').slideDown();
+        break;
+      default:
+        $('.mandarin').slideUp();
+        break;
+    }
+  }
+  $('select#entry_language_id').change(function(e) {
+    updateFields();
+  })
+  $('.mandarin').hide();

@@ -13,7 +13,7 @@ describe Entry do
       Entry.make.language.should_not be_nil
     end
     
-    [:user_id, :standard_form, :language_id, :transliteration, :meaning_language_id].each do |field|
+    [:user_id, :standard_form, :language_id, :transliteration].each do |field|
       it "should require #{field}" do
        Entry.make_unsaved(field => nil).should have(1).error_on(field)
       end

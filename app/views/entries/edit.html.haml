@@ -1,7 +1,7 @@
 :ruby
   heading 'Edit Entry' do |back, forward|
     back.title = 'Back'
-    back.path = entry_path(@entry)
+    back.path = user_entries_path(@entry.user_id)
   end
 
 = error_messages_for :entry

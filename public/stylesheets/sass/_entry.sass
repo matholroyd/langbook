@@ -1,3 +1,15 @@
 canvas#drawing
   :border 2px solid black
     
+    
+table.entries
+  tr
+    &:hover
+      td, th
+        :background yellow
+        :cursor pointer
+      ul.actions
+        :display normal
+  td, th
+    ul.actions
+      :display none

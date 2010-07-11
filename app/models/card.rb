@@ -25,5 +25,5 @@ class Card < ActiveRecord::Base
     self.question_formatted = RedCloth.new(question).to_html
     self.answer_formatted = RedCloth.new(answer).to_html
   end
-  
 end
+

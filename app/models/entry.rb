@@ -11,4 +11,12 @@ class Entry < ActiveRecord::Base
     language.set_transliterate(self)
   end
   
+  def image_path
+    "#{RAILS_ROOT}/public#{relative_path}"
+  end
+  
+  def relative_path
+    "/images/entries/#{id}.png"
+  end
+  
 end

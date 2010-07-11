@@ -4,17 +4,21 @@
     forward.path = new_user_entry_path(@user)
   end
 
-%table
+%table.entries
   %thead
     %tr
       %th Entries
       %th
+      %th Delete
   %tbody
     - @entries.each do |entry|
-      %tr
+      %tr[entry]{:ref => edit_entry_path(entry)}
         %td
           %span.standard_form= entry.standard_form
-        %td
-          %ul.actions
-            %li= link_to 'Destroy', entry_path(entry), :method => :delete
+        %td= image_tag(entry.relative_path, :width => '100', :height => '60')
+        %td= check_box_tag entry.id, 'delete'
         
+:javascript
+  $('tr.entry').click(function (e){
+    window.location = $(e.currentTarget).attr('ref');
+  });
